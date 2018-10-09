@@ -46,7 +46,7 @@ let validateParas = function (setting) {
 			let schema = Joi.object().keys({
 				init: Joi.number().required().integer(),
 				step: Joi.number().required().integer(),
-				count: Joi.number().required().integer(),
+				until: Joi.number().required().integer(),
 				type: Joi.any()
 			})
 			const result = Joi.validate(item, schema)

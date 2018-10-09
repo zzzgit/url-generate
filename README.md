@@ -17,7 +17,7 @@ let gen = generater.generate("http://www.foo.com/{page}", {
 		type: generater.type.increasing,
 		init: 1,
 		step: 2,
-		count: 3
+		until: 3
 	}
 })
 console.log([...gen])
