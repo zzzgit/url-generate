@@ -21,6 +21,10 @@
     "url": "https://github.com/zzzgit/url-generate/issues"
   },
   "homepage": "https://github.com/zzzgit/url-generate#readme",
+  "engines": {
+    "node": ">10.9.0",
+    "npm": ">5.5.0"
+  },
   "dependencies": {
     "joi": "^13.6.0",
     "url-template": "^2.0.8"
