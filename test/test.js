@@ -7,25 +7,25 @@ let str = 'http://www.domain.com/{foo}/{bar}'
 
 
 describe('border and normal', function () {
-	describe('count', function () {
+	describe('until', function () {
 		let iterator = generater.generate(str, {
 			foo: {
 				type: generater.type.increasing,
-				init: 1, step: 2, count: 0,
+				init: 1, step: 2, until: 0,
 			},
 		})
 		let arr = [...iterator]
-		it('count.border', function () {
+		it('until.border', function () {
 			expect(arr.length).to.equal(0)
 		})
 		iterator = generater.generate(str, {
 			foo: {
 				type: generater.type.increasing,
-				init: 1, step: 2, count: 2,
+				init: 1, step: 2, until: 2,
 			},
 		})
 		let arr2 = [...iterator]
-		it('count.normal', function () {
+		it('until.normal', function () {
 			expect(arr2.length).to.equal(2)
 		})
 	})
@@ -33,7 +33,7 @@ describe('border and normal', function () {
 		let iterator = generater.generate(str, {
 			foo: {
 				type: generater.type.increasing,
-				init: 1, step: 0, count: 2,
+				init: 1, step: 0, until: 2,
 			},
 		})
 		let arr = [...iterator]
@@ -43,7 +43,7 @@ describe('border and normal', function () {
 		iterator = generater.generate(str, {
 			foo: {
 				type: generater.type.increasing,
-				init: 1, step: 2, count: 2,
+				init: 1, step: 2, until: 2,
 			},
 		})
 		let arr2 = [...iterator]
@@ -55,7 +55,7 @@ describe('border and normal', function () {
 		let iterator = generater.generate(str, {
 			foo: {
 				type: generater.type.increasing,
-				init: -1, step: 1, count: 2,
+				init: -1, step: 1, until: 2,
 			},
 		})
 		let arr = [...iterator]
@@ -67,7 +67,7 @@ describe('border and normal', function () {
 		let iterator = generater.generate(str, {
 			foo: {
 				type: generater.type.increasing,
-				init: -1, step: 2, count: 3,
+				init: -1, step: 2, until: 3,
 			},
 		})
 		let arr = [...iterator]
@@ -140,7 +140,7 @@ describe('defaults and validation', function () {
 		it('no init', function () {
 			let func = () => {
 				generater.generate("http://xxx.com", {
-					foo: { type: generater.type.increasing, count: 2, step: 3, }
+					foo: { type: generater.type.increasing, until: 2, step: 3, }
 				})
 			}
 			expect(func).to.throw()
@@ -148,7 +148,7 @@ describe('defaults and validation', function () {
 		it('invalid init', function () {
 			let func = () => {
 				generater.generate("http://xxx.com", {
-					foo: { type: generater.type.increasing, count: 2, step: 3, init: null }
+					foo: { type: generater.type.increasing, until: 2, step: 3, init: null }
 				})
 			}
 			expect(func).to.throw()
@@ -156,12 +156,12 @@ describe('defaults and validation', function () {
 		it('no step', function () {
 			let func = () => {
 				generater.generate("http://xxx.com", {
-					foo: { type: generater.type.increasing, count: 2 }
+					foo: { type: generater.type.increasing, until: 2 }
 				})
 			}
 			expect(func).to.throw()
 		})
-		it('no count', function () {
+		it('no until', function () {
 			let func = () => {
 				generater.generate("http://xxx.com", {
 					foo: { type: generater.type.increasing, }

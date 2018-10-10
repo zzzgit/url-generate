@@ -1,6 +1,6 @@
 let types = require("./ShifterType")
 
-let fields = ["type", "init", "step", "count", "field"] // need to modify this array responsibly if the structure is changed
+let fields = ["type", "init", "step", "until", "field"] // need to modify this array responsibly if the structure is changed
 
 let xxxx = function (setting) {
 	if ((typeof setting.type) !== "number" || setting.type == null) {
@@ -75,11 +75,11 @@ class ShifterImpl extends Shifter {
 	init2(setting) {
 		switch (setting.type) {
 		case types.increasing:
-			if (setting.count < 1) {
+			if (setting.until < 1) {
 				return null
 			}
 			this._array = [setting.init]
-			for (let i = 1, limit = setting.count; i < limit; i++) {
+			for (let i = 1, limit = setting.until; i < limit; i++) {
 				this._array.push(setting.init + i * setting.step)
 			}
 			break
